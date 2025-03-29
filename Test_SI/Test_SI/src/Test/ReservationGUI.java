@@ -59,7 +59,7 @@ public class ReservationGUI extends JFrame {
         labelBatiment.setBounds(20, 140, 100, 25);
         add(labelBatiment);
 
-        batimentComboBox = new JComboBox<>(new String[]{"1 - Batiment A", "2 - Batiment B", "3 - Batiment C"});
+        batimentComboBox = new JComboBox<>(new String[] { "1 - Batiment A", "2 - Batiment B", "3 - Batiment C" });
         batimentComboBox.setBounds(120, 140, 200, 25);
         add(batimentComboBox);
 
@@ -75,7 +75,7 @@ public class ReservationGUI extends JFrame {
         supprimerBtn.setBounds(240, 180, 100, 30);
         add(supprimerBtn);
 
-        String[] columnNames = {"ID", "Nom Employé", "Date", "Durée", "Salle"};
+        String[] columnNames = { "ID", "Nom Employé", "Date", "Durée", "Salle" };
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -92,28 +92,28 @@ public class ReservationGUI extends JFrame {
                     String salleText = salleField.getText().trim();
                     String batimentText = (String) batimentComboBox.getSelectedItem();
 
-                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty() || batimentText == null) {
+                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty()
+                            || batimentText == null) {
                         throw new IllegalArgumentException("Tous les champs doivent être remplis.");
                     }
 
                     LocalDateTime date = LocalDateTime.parse(dateText.replace(" ", "T"));
                     double duree = Double.parseDouble(dureeText);
                     String[] batimentParts = batimentText.split(" - ");
-                    Batiment batiment = new Batiment(batimentParts[0], batimentParts[1]);
+                    Batiment batiment = new Batiment(batimentParts[0]);
                     Salle salle = new Salle(batiment, salleText);
 
                     if (duree <= 0) {
                         throw new IllegalArgumentException("La duree doit etre supérieure a 0.");
                     }
 
-                    
                     Reservation reservation = new Reservation(nom, date, duree, salle);
 
-                    gestionReservations.addReservation(reservation);
+                    gestionReservations.addReservation(reservation ,);
                     rafraichirTable();
                     JOptionPane.showMessageDialog(null, "Réservation ajoutée !");
-                } catch (DejaReservéeException ex) {
-                    JOptionPane.showMessageDialog(null, "Erreur : Salle déjà réservée.");
+                } catch (SalleNotExist ex) {
+                    JOptionPane.showMessageDialog(null, "Erreur :Salle non-Trouvée.");
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Erreur : Durée invalide.");
                 } catch (Exception ex) {
@@ -138,14 +138,15 @@ public class ReservationGUI extends JFrame {
                     String salleText = salleField.getText().trim();
                     String batimentText = (String) batimentComboBox.getSelectedItem();
 
-                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty() || batimentText == null) {
+                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty()
+                            || batimentText == null) {
                         throw new IllegalArgumentException("Tous les champs doivent être remplis.");
                     }
 
                     LocalDateTime date = LocalDateTime.parse(dateText.replace(" ", "T"));
                     double duree = Double.parseDouble(dureeText);
                     String[] batimentParts = batimentText.split(" - ");
-                    Batiment batiment = new Batiment(batimentParts[0], batimentParts[1]);
+                    Batiment batiment = new Batiment(batimentParts[0]);
                     Salle salle = new Salle(batiment, salleText);
 
                     if (duree <= 0) {
@@ -194,7 +195,7 @@ public class ReservationGUI extends JFrame {
         try {
             List<Reservation> reservations = gestionReservations.afficherReservations();
             for (Reservation r : reservations) {
-                tableModel.addRow(new Object[]{
+                tableModel.addRow(new Object[] {
                         r.getIdResrvation(),
                         r.getNom_Employe(),
                         r.getDate().toString(),

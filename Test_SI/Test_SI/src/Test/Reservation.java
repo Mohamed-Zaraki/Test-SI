@@ -9,6 +9,7 @@ public class Reservation {
 	private LocalDateTime Date;
 	private double Durée;
 	private Salle salle;
+	
 
 	public Reservation(String nom_Employe, LocalDateTime date, double durée, Salle salle) {
 

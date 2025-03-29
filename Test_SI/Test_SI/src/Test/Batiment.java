@@ -5,9 +5,9 @@ import java.util.List;
 
 class Batiment {
     private String nom;
-    private List<Salle> salles;
+    public List<Salle> salles;
 
-    public Batiment(String code, String nom) {
+    public Batiment(String nom) {
 
         this.nom = nom;
         this.salles = new ArrayList<>();
