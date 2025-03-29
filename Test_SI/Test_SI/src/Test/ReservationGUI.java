@@ -59,7 +59,7 @@ public class ReservationGUI extends JFrame {
         labelBatiment.setBounds(20, 140, 100, 25);
         add(labelBatiment);
 
-        batimentComboBox = new JComboBox<>(new String[]{"1 - Batiment A", "2 - Batiment B", "B3 - Batiment 3"});
+        batimentComboBox = new JComboBox<>(new String[]{"1 - Batiment A", "2 - Batiment B", "3 - Batiment C"});
         batimentComboBox.setBounds(120, 140, 200, 25);
         add(batimentComboBox);
 
