@@ -9,24 +9,22 @@ public class Reservation {
 	private LocalDateTime Date;
 	private double Durée;
 	private Salle salle;
-	
-	
-	
+
 	public Reservation(String nom_Employe, LocalDateTime date, double durée, Salle salle) {
-	    
-	    this.Nom_Employe = nom_Employe;
-	    this.Date = date;
-	    this.Durée = durée;
+
+		this.Nom_Employe = nom_Employe;
+		this.Date = date;
+		this.Durée = durée;
 		this.salle = salle;
-		this.IdResrvation = generateUniqueID(); 
+		this.IdResrvation = generateUniqueID();
 	}
 
 	private String generateUniqueID() {
-	    String[] salleParts = salle.getNom_Salle().split(" ");
-	    String[] batimentParts = salle.getBatiment().getNom().split(" ");
-	    String salleNum = salleParts[salleParts.length - 1];
-	    String batimentCode = batimentParts[batimentParts.length - 1];
-	    return salleNum + batimentCode + System.currentTimeMillis(); 
+		String[] salleParts = salle.getNom_Salle().split(" ");
+		String[] batimentParts = salle.getBatiment().getNom().split(" ");
+		String salleNum = salleParts[salleParts.length - 1];
+		String batimentCode = batimentParts[batimentParts.length - 1];
+		return batimentCode + salleNum;
 	}
 
 	public String getNom_Employe() {
@@ -53,8 +51,6 @@ public class Reservation {
 		Durée = durée;
 	}
 
-	
-
 	public String getIdResrvation() {
 		return IdResrvation;
 	}
@@ -71,33 +67,30 @@ public class Reservation {
 		IdResrvation = idResrvation;
 	}
 
-	/*  public void selectID(Salle salle) throws SalleNotExist
-	{
-		 Batiment batiment = salle.getBatiment();
-		if (!batiment.getSalles().contains(salle)) { 
-	        throw new SalleNotExist("Aucune salle trouvée pour ce bâtiment.");
-	    }
-	
-		else
-		{
-			for(Salle salles: batiment.getSalles())
-			{
-				if(salle.getNom_Salle().equals(salles.getNom_Salle()))
-				{
-					String[] Salle = salle.getNom_Salle().split(" ");
-					String[] Batiment = batiment.getNom().split(" ");
-					 String salleNum = Salle[Salle.length - 1]; 
-			            String batimentCode = Batiment[Batiment.length - 1];
-					IdResrvation = salleNum + batimentCode ;
-					break;
-				}
-			}
-		}
-	}	 */
-	
-		
-	}
+	/*
+	 * public void selectID(Salle salle) throws SalleNotExist
+	 * {
+	 * Batiment batiment = salle.getBatiment();
+	 * if (!batiment.getSalles().contains(salle)) {
+	 * throw new SalleNotExist("Aucune salle trouvée pour ce bâtiment.");
+	 * }
+	 * 
+	 * else
+	 * {
+	 * for(Salle salles: batiment.getSalles())
+	 * {
+	 * if(salle.getNom_Salle().equals(salles.getNom_Salle()))
+	 * {
+	 * String[] Salle = salle.getNom_Salle().split(" ");
+	 * String[] Batiment = batiment.getNom().split(" ");
+	 * String salleNum = Salle[Salle.length - 1];
+	 * String batimentCode = Batiment[Batiment.length - 1];
+	 * IdResrvation = salleNum + batimentCode ;
+	 * break;
+	 * }
+	 * }
+	 * }
+	 * }
+	 */
 
-
-
-
+}

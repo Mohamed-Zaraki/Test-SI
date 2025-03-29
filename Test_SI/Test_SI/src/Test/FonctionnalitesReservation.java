@@ -34,7 +34,7 @@ public class FonctionnalitesReservation {
 			{
 				if(reservation.getIdResrvation().equals(IdResrvation))
 				{
-					reservation.setIdResrvation(IdResrvation); //Chaque réservation doit être attribuée à un numéro unique généré automatiquement. 
+					reservation.setIdResrvation(IdResrvation); 
 					reservation.setNom_Employe(Nom_Employe);
 					reservation.setDate(Date);
 					reservation.setDurée(Durée);

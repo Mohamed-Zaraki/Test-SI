@@ -8,10 +8,11 @@ class Batiment {
     private List<Salle> salles;
 
     public Batiment(String code, String nom) {
-        
+
         this.nom = nom;
         this.salles = new ArrayList<>();
     }
+
     public String getNom() {
         return nom;
     }
@@ -24,4 +25,3 @@ class Batiment {
         salles.add(salle);
     }
 }
-

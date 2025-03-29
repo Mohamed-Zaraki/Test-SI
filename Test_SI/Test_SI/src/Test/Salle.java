@@ -1,6 +1,6 @@
 package Test;
 
-import java.util.List;
+
 
 public class Salle {
 	 private Batiment batiment;
