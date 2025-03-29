@@ -59,7 +59,7 @@ public class ReservationGUI extends JFrame {
         labelBatiment.setBounds(20, 140, 100, 25);
         add(labelBatiment);
 
-        batimentComboBox = new JComboBox<>(new String[] { "1 - Batiment A", "2 - Batiment B", "3 - Batiment C" });
+        batimentComboBox = new JComboBox<>(new String[]{"1 - Batiment A", "2 - Batiment B", "B3 - Batiment 3"});
         batimentComboBox.setBounds(120, 140, 200, 25);
         add(batimentComboBox);
 
@@ -75,7 +75,7 @@ public class ReservationGUI extends JFrame {
         supprimerBtn.setBounds(240, 180, 100, 30);
         add(supprimerBtn);
 
-        String[] columnNames = { "ID", "Nom Employé", "Date", "Durée", "Salle" };
+        String[] columnNames = {"ID", "Nom Employé", "Date", "Durée", "Salle"};
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -92,8 +92,7 @@ public class ReservationGUI extends JFrame {
                     String salleText = salleField.getText().trim();
                     String batimentText = (String) batimentComboBox.getSelectedItem();
 
-                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty()
-                            || batimentText == null) {
+                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty() || batimentText == null) {
                         throw new IllegalArgumentException("Tous les champs doivent être remplis.");
                     }
 
@@ -107,6 +106,7 @@ public class ReservationGUI extends JFrame {
                         throw new IllegalArgumentException("La duree doit etre supérieure a 0.");
                     }
 
+                    
                     Reservation reservation = new Reservation(nom, date, duree, salle);
 
                     gestionReservations.addReservation(reservation);
@@ -138,8 +138,7 @@ public class ReservationGUI extends JFrame {
                     String salleText = salleField.getText().trim();
                     String batimentText = (String) batimentComboBox.getSelectedItem();
 
-                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty()
-                            || batimentText == null) {
+                    if (nom.isEmpty() || dateText.isEmpty() || dureeText.isEmpty() || salleText.isEmpty() || batimentText == null) {
                         throw new IllegalArgumentException("Tous les champs doivent être remplis.");
                     }
 
@@ -195,7 +194,7 @@ public class ReservationGUI extends JFrame {
         try {
             List<Reservation> reservations = gestionReservations.afficherReservations();
             for (Reservation r : reservations) {
-                tableModel.addRow(new Object[] {
+                tableModel.addRow(new Object[]{
                         r.getIdResrvation(),
                         r.getNom_Employe(),
                         r.getDate().toString(),

@@ -24,7 +24,7 @@ public class Reservation {
 		String[] batimentParts = salle.getBatiment().getNom().split(" ");
 		String salleNum = salleParts[salleParts.length - 1];
 		String batimentCode = batimentParts[batimentParts.length - 1];
-		return batimentCode + salleNum;
+		return batimentCode + salleNum ;
 	}
 
 	public String getNom_Employe() {
